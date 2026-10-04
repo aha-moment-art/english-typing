@@ -6,7 +6,7 @@ Live site: <https://aha-moment-art.github.io/english-typing/>
 
 ## Practice
 
-Choose a text and begin typing, or select Start typing. There is no separate visible input box or caret. Correct letters turn green; a wrong character flashes red for 450 ms and restarts the current word, retaining earlier words and historical errors. Backspace removes the previous character. A completed passage advances after 800 ms while practice is focused and visible. Leaving the page cancels automatic advance; Continue or Enter resumes navigation. The final passage stays on its completion summary. You may also jump between passages, return to the library, or start the current passage over.
+Choose a text and begin typing, or select Start typing. There is no separate visible input box or caret. Correct letters turn green; a wrong character flashes red for 450 ms and is removed for another try. Every preceding correct character is retained, including those in the current word, and historical errors remain in the accuracy calculation. Backspace removes the previous character. A completed passage advances after 800 ms while practice is focused and visible. Leaving the page cancels automatic advance; Continue or Enter resumes navigation. The final passage stays on its completion summary. You may also jump between passages, return to the library, or start the current passage over.
 
 - Six classic works, ten excerpts each, with 40–100 words per passage.
 - Capitals, spaces and punctuation must match. Use straight quotes and two hyphens (`--`) for a long dash. Pasting and dropping text are disabled.

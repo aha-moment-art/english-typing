@@ -18,7 +18,7 @@ startButton.addEventListener('pointerdown', event => { if (document.activeElemen
 document.querySelector('.practice-nav').append(startButton);
 stage.append(input, $('typing-hint'), $('timer-state'), $('error-feedback'));
 input.setAttribute('aria-label', 'Type the displayed passage');
-$('typing-hint').textContent = 'Type directly here. Correct letters turn green. A mistake restarts the current word.';
+$('typing-hint').textContent = 'Type directly here. Correct letters turn green. Only a mistaken character needs to be typed again.';
 input.rows = 1;
 
 function checkpoint() {
@@ -181,13 +181,12 @@ function onInput() {
   if (error >= 0) {
     retrying = true; input.readOnly = true;
     const attempt = record;
-    $('error-feedback').textContent += ' Try this word again.';
+    $('error-feedback').textContent += ' Type this character again.';
     stage.classList.add('has-error');
     feedbackTimer = setTimeout(() => {
       if (record !== attempt) return;
-      // Retry only the current word; previous words and attempt statistics stay intact.
-      const start = record.target.lastIndexOf(' ', Math.max(0, error - 1)) + 1;
-      record.input = record.input.slice(0, start);
+      // Keep every correct preceding character, including those in the current word.
+      record.input = record.input.slice(0, error);
       input.value = record.input; input.readOnly = false; retrying = false;
       renderTyping(); save();
     }, 450);
