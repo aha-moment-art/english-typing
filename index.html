@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ed">
+  <meta name="description" content="一段英文：用经典文学与随笔，练习英文打字。逐段跟打、即时纠错、保存进度。">
+  <title>一段英文 · 慢慢读，认真打</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="一段英文，返回书架"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 7c-4-3-8-3-12-2v19c4-1 8-1 12 2 4-3 8-3 12-2V5c-4-1-8-1-12 2Zm0 0v19" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>一段英文<small>A LITTLE ENGLISH</small></span></a>
+    <div class="header-note"><span class="status-dot"></span>慢慢读，认真打</div>
+    <button class="text-button" id="help-button" type="button">练习指南 <span aria-hidden="true">↗</span></button>
+  </header>
+  <main id="main" class="wrap" tabindex="-1">
+    <p id="storage-warning" class="notice" role="status" hidden>浏览器暂时无法保存进度，你仍然可以正常练习。</p>
+    <section id="library" aria-labelledby="library-heading">
+      <div class="hero">
+        <div><p class="eyebrow">A FEW WORDS, EVERY DAY</p><h1 id="library-heading">把一段英文，<br><em>慢慢写进心里。</em></h1><p class="hero-copy">从一本好书的一小段开始。<br>让指尖跟上文字，也给自己一点专注的时间。</p></div>
+        <aside class="daily-note"><span class="note-index">YOUR READING CORNER</span><div class="note-art" aria-hidden="true"><span class="sun"></span><span class="horizon"></span><span class="leaf leaf-a"></span><span class="leaf leaf-b"></span><span class="stem"></span></div><p>不必赶路，<br>一段也是进步。</p><div class="note-bottom"><span id="total-progress">0 / 60 段已完成</span><span aria-hidden="true">✳</span></div></aside>
+      </div>
+      <div id="resume-banner" class="resume-banner" hidden><div><span class="eyebrow">PICK UP WHERE YOU LEFT OFF</span><p id="resume-description"></p></div><button id="resume-button" class="primary" type="button">继续练习 <span aria-hidden="true">→</span></button></div>
+      <div class="section-heading"><div><p class="eyebrow">THE SMALL LIBRARY</p><h2>挑一篇，开始吧<span class="count">06</span></h2></div><p>经典原文 · 每段 40–100 词</p></div>
+      <div id="book-grid" class="book-grid" aria-label="经典文章书架"><p role="status">正在整理书架…</p></div>
+      <div class="library-footnote"><span>01 &nbsp; 选一篇文章</span><i aria-hidden="true">—</i><span>02 &nbsp; 对照原文输入</span><i aria-hidden="true">—</i><span>03 &nbsp; 留下一点进步</span></div>
+    </section>
+    <section id="practice" aria-labelledby="practice-heading" hidden>
+      <div class="practice-nav"><button id="back-button" class="text-button" type="button">← 返回书架</button><span id="save-status">进度自动保存在此浏览器</span></div>
+      <div class="practice-heading"><div><p class="eyebrow" id="practice-english"></p><h1 id="practice-heading" tabindex="-1"></h1><p id="practice-author" class="muted"></p></div><div class="chapter-picker"><label for="paragraph-select">跳转段落</label><select id="paragraph-select"></select></div></div>
+      <div class="practice-layout"><div class="writing-desk">
+        <section class="passage-paper" aria-labelledby="source-label"><div class="paper-heading"><span id="source-label">原文 <span class="small-en">READ & TYPE</span></span><span id="paragraph-meta"></span></div><p id="source-text" lang="en"></p><div class="source-credit"><span id="chapter-name"></span><a id="source-link" target="_blank" rel="noopener noreferrer">查看原文 ↗</a></div></section>
+        <section class="input-paper" aria-labelledby="typing-label"><div class="paper-heading"><label for="typing-input" id="typing-label">轮到你了 <span class="small-en">YOUR TURN</span></label><span id="character-count">0 字符</span></div><textarea id="typing-input" lang="en" rows="5" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-describedby="typing-hint error-feedback" placeholder="在这里输入上方的英文，敲下第一个字母开始计时…"></textarea><div class="input-bottom"><span id="typing-hint">注意大小写、空格和标点；错误处会在原文中标红并加下划线。</span><span id="timer-state">准备好了</span></div><p id="error-feedback" class="error-feedback" hidden></p></section>
+        <div id="completion" class="completion" role="status" hidden><span class="completion-check" aria-hidden="true">✓</span><div><strong id="completion-title">这一段，完成了。</strong><p id="completion-detail"></p></div></div>
+        <div class="practice-actions"><button id="previous-button" class="secondary" type="button">← 上一段</button><button id="restart-button" class="text-button" type="button">重新练习</button><button id="next-button" class="primary" type="button">下一段 →</button></div>
+        <p id="action-message" class="action-message" role="status"></p>
+      </div><aside class="stats-panel" aria-label="本段练习统计"><p class="eyebrow">YOUR PACE</p><div class="stat"><span>打字速度</span><p><strong id="speed">0</strong><small>WPM</small></p></div><div class="stat"><span>准确率</span><p><strong id="accuracy">—</strong><small id="accuracy-unit"></small></p></div><div class="stat"><span>本段用时</span><p><strong id="elapsed">00:00</strong></p></div><div class="stats-bottom"><span id="book-progress"></span><progress id="book-progress-bar" max="10" value="0" aria-label="本篇完成进度"></progress><p>先准确，再流畅。<br>找到自己的节奏就好。</p></div></aside></div>
+    </section>
+    <section id="load-error" class="load-error" hidden role="alert"><h2>书架暂时没有打开</h2><p>请检查网络后重试，练习记录仍保留在这个浏览器中。</p><button id="retry-button" class="primary" type="button">重新加载</button></section>
+  </main>
+  <footer class="site-footer wrap"><span>一段英文 <span class="footer-divider">/</span> A little practice, a little progress.</span><span>经典选段 · <a href="./sources.html">文章来源与使用说明 ↗</a></span></footer>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><p class="eyebrow">MAKE YOURSELF AT HOME</p><button id="close-help" class="text-button" type="button" aria-label="关闭练习指南">✕</button></div><h2 id="help-title">每天，留一点时间给英文。</h2><ol><li>选择一篇文章，对照上方原文在输入区逐字跟打。</li><li>原文的绿色文字表示正确，红色下划线表示需要修改。可以用退格键或移动光标修正。</li><li>全文正确后，本段完成。点击“下一段”继续，也可以随时跳转段落。</li></ol><p>第一次输入开始计时；离开输入框或切走页面时暂停。WPM 按每 5 个正确字符折合一个词计算；准确率保留每次输入的记录，修改不会抹去之前的错误。</p><p>练习时不支持粘贴。英文引号使用键盘上的直引号，长破折号用两个短横线 <code>--</code> 输入。</p><p class="muted">进度仅保存在当前浏览器，不会上传。清除浏览器数据会清除进度；不同设备之间不自动同步。</p><button id="got-it" class="primary" type="button">开始我的一段英文 →</button></dialog>
+  <noscript><p class="wrap notice">请启用 JavaScript 以使用打字练习功能。</p></noscript>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{
+  "id": "walden",
+  "title": "瓦尔登湖",
+  "englishTitle": "Walden",
+  "author": "Henry David Thoreau",
+  "year": "1854",
+  "category": "自然",
+  "description": "慢下来，思考生活真正需要什么。",
+  "source": "https://www.gutenberg.org/ebooks/205",
+  "sourceText": "https://www.gutenberg.org/cache/epub/205/pg205-images.html",
+  "copyright": "Public domain in the USA.",
+  "paragraphs": [
+    {
+      "id": "walden-01",
+      "text": "At a certain season of our life we are accustomed to consider every spot as the possible site of a house. I have thus surveyed the country on every side within a dozen miles of where I live. In imagination I have bought all the farms in succession, for all were to be bought, and I knew their price.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 1,
+      "words": 59
+    },
+    {
+      "id": "walden-02",
+      "text": "I walked over each farmer's premises, tasted his wild apples, discoursed on husbandry with him, took his farm at his price, at any price, mortgaging it to him in my mind; even put a higher price on it,--took everything but a deed of it,--took his word for his deed, for I dearly love to talk,--cultivated it, and him too to some extent, I trust, and withdrew when I had enjoyed it long enough, leaving him to carry it on. This experience entitled me to be regarded as a sort of real-estate broker by my friends.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 1,
+      "words": 95
+    },
+    {
+      "id": "walden-03",
+      "text": "Wherever I sat, there I might live, and the landscape radiated from me accordingly. What is a house but a sedes, a seat?--better if a country seat. I discovered many a site for a house not likely to be soon improved, which some might have thought too far from the village, but to my eyes the village was too far from it.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 1,
+      "words": 62
+    },
+    {
+      "id": "walden-04",
+      "text": "Well, there I might live, I said; and there I did live, for an hour, a summer and a winter life; saw how I could let the years run off, buffet the winter through, and see the spring come in. The future inhabitants of this region, wherever they may place their houses, may be sure that they have been anticipated.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 1,
+      "words": 60
+    },
+    {
+      "id": "walden-05",
+      "text": "An afternoon sufficed to lay out the land into orchard, woodlot, and pasture, and to decide what fine oaks or pines should be left to stand before the door, and whence each blasted tree could be seen to the best advantage; and then I let it lie, fallow perchance, for a man is rich in proportion to the number of things which he can afford to let alone.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 1,
+      "words": 68
+    },
+    {
+      "id": "walden-06",
+      "text": "I have frequently seen a poet withdraw, having enjoyed the most valuable part of a farm, while the crusty farmer supposed that he had got a few wild apples only. Why, the owner does not know it for many years when a poet has put his farm in rhyme, the most admirable kind of invisible fence, has fairly impounded it, milked it, skimmed it, and got all the cream, and left the farmer only the skimmed milk.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 3,
+      "words": 77
+    },
+    {
+      "id": "walden-07",
+      "text": "I was in haste to buy it, before the proprietor finished getting out some rocks, cutting down the hollow apple trees, and grubbing up some young birches which had sprung up in the pasture, or, in short, had made any more of his improvements.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 4,
+      "words": 44
+    },
+    {
+      "id": "walden-08",
+      "text": "To enjoy these advantages I was ready to carry it on; like Atlas, to take the world on my shoulders,--I never heard what compensation he received for that,--and do all those things which had no other motive or excuse but that I might pay for it and be unmolested in my possession of it; for I knew all the while that it would yield the most abundant crop of the kind I wanted if I could only afford to let it alone. But it turned out as I have said.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 4,
+      "words": 90
+    },
+    {
+      "id": "walden-09",
+      "text": "All that I could say, then, with respect to farming on a large scale, (I have always cultivated a garden,) was, that I had had my seeds ready. Many think that seeds improve with age. I have no doubt that time discriminates between the good and the bad; and when at last I shall plant, I shall be less likely to be disappointed. But I would say to my fellows, once for all, As long as possible live free and uncommitted. It makes but little difference whether you are committed to a farm or the county jail.",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 5,
+      "words": 97
+    },
+    {
+      "id": "walden-10",
+      "text": "Old Cato, whose \"De Re Rusticâ\" is my \"Cultivator,\" says, and the only translation I have seen makes sheer nonsense of the passage, \"When you think of getting a farm, turn it thus in your mind, not to buy greedily; nor spare your pains to look at it, and do not think it enough to go round it once. The oftener you go there the more it will please you, if it is good.\"",
+      "chapter": "Where I Lived, and What I Lived For",
+      "sourceParagraph": 6,
+      "words": 74
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "jane",
+  "title": "简·爱",
+  "englishTitle": "Jane Eyre",
+  "author": "Charlotte Brontë",
+  "year": "1847",
+  "category": "成长",
+  "description": "跟随一个独立而敏感的声音。",
+  "source": "https://www.gutenberg.org/ebooks/1260",
+  "sourceText": "https://www.gutenberg.org/cache/epub/1260/pg1260-images.html",
+  "copyright": "Public domain in the USA.",
+  "paragraphs": [
+    {
+      "id": "jane-01",
+      "text": "There was no possibility of taking a walk that day. We had been wandering, indeed, in the leafless shrubbery an hour in the morning; but since dinner (Mrs. Reed, when there was no company, dined early) the cold winter wind had brought with it clouds so sombre, and a rain so penetrating, that further outdoor exercise was now out of the question.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 1,
+      "words": 62
+    },
+    {
+      "id": "jane-02",
+      "text": "I was glad of it: I never liked long walks, especially on chilly afternoons: dreadful to me was the coming home in the raw twilight, with nipped fingers and toes, and a heart saddened by the chidings of Bessie, the nurse, and humbled by the consciousness of my physical inferiority to Eliza, John, and Georgiana Reed.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 2,
+      "words": 56
+    },
+    {
+      "id": "jane-03",
+      "text": "The said Eliza, John, and Georgiana were now clustered round their mama in the drawing-room: she lay reclined on a sofa by the fireside, and with her darlings about her (for the time neither quarrelling nor crying) looked perfectly happy.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 3,
+      "words": 40
+    },
+    {
+      "id": "jane-04",
+      "text": "Me, she had dispensed from joining the group; saying, \"She regretted to be under the necessity of keeping me at a distance; but that until she heard from Bessie, and could discover by her own observation, that I was endeavouring in good earnest to acquire a more sociable and childlike disposition, a more attractive and sprightly manner--something lighter, franker, more natural, as it were--she really must exclude me from privileges intended only for contented, happy, little children.\"",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 3,
+      "words": 77
+    },
+    {
+      "id": "jane-05",
+      "text": "A breakfast-room adjoined the drawing-room, I slipped in there. It contained a bookcase: I soon possessed myself of a volume, taking care that it should be one stored with pictures. I mounted into the window-seat: gathering up my feet, I sat cross-legged, like a Turk; and, having drawn the red moreen curtain nearly close, I was shrined in double retirement.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 6,
+      "words": 60
+    },
+    {
+      "id": "jane-06",
+      "text": "Folds of scarlet drapery shut in my view to the right hand; to the left were the clear panes of glass, protecting, but not separating me from the drear November day. At intervals, while turning over the leaves of my book, I studied the aspect of that winter afternoon. Afar, it offered a pale blank of mist and cloud; near a scene of wet lawn and storm-beat shrub, with ceaseless rain sweeping away wildly before a long and lamentable blast.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 7,
+      "words": 80
+    },
+    {
+      "id": "jane-07",
+      "text": "Nor could I pass unnoticed the suggestion of the bleak shores of Lapland, Siberia, Spitzbergen, Nova Zembla, Iceland, Greenland, with \"the vast sweep of the Arctic Zone, and those forlorn regions of dreary space,--that reservoir of frost and snow, where firm fields of ice, the accumulation of centuries of winters, glazed in Alpine heights above heights, surround the pole, and concentre the multiplied rigours of extreme cold.\" Of these death-white realms I formed an idea of my own: shadowy, like all the half-comprehended notions that float dim through children's brains, but strangely impressive.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 9,
+      "words": 93
+    },
+    {
+      "id": "jane-08",
+      "text": "The words in these introductory pages connected themselves with the succeeding vignettes, and gave significance to the rock standing up alone in a sea of billow and spray; to the broken boat stranded on a desolate coast; to the cold and ghastly moon glancing through bars of cloud at a wreck just sinking.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 9,
+      "words": 53
+    },
+    {
+      "id": "jane-09",
+      "text": "John Reed was a schoolboy of fourteen years old; four years older than I, for I was but ten: large and stout for his age, with a dingy and unwholesome skin; thick lineaments in a spacious visage, heavy limbs and large extremities. He gorged himself habitually at table, which made him bilious, and gave him a dim and bleared eye and flabby cheeks. He ought now to have been at school; but his mama had taken him home for a month or two, \"on account of his delicate health.\"",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 23,
+      "words": 89
+    },
+    {
+      "id": "jane-10",
+      "text": "Mr. Miles, the master, affirmed that he would do very well if he had fewer cakes and sweetmeats sent him from home; but the mother's heart turned from an opinion so harsh, and inclined rather to the more refined idea that John's sallowness was owing to over-application and, perhaps, to pining after home.",
+      "chapter": "CHAPTER I",
+      "sourceParagraph": 23,
+      "words": 53
+    }
+  ]
+}

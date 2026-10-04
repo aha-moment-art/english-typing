@@ -1,0 +1,8 @@
+{
+  "name": "a-little-english",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A quiet, build-free English typing practice site.",
+  "scripts": { "test": "node --test tests/*.test.js" }
+}
