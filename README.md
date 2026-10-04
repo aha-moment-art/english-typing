@@ -1,43 +1,43 @@
-# 一段英文
+# A Little English
 
-藕荷主色、浅纸色背景的英文打字练习网站。上方原文、下方输入，读一点，练一点。
+A quiet English typing practice site with a light lavender palette and a paper-like background. Read the original above and type below, one passage at a time.
 
-网站：<https://aha-moment-art.github.io/english-typing/>
+Live site: <https://aha-moment-art.github.io/english-typing/>
 
-## 使用
+## Practice
 
-选择文章开始练习。正确字符显示绿色，错误字符以红色下划线标记。完全匹配后完成本段，再手动进入下一段。可随时跳转、回到书架或重新练习当前段落。
+Choose a text to begin. Correct letters turn green; errors have red underlines. A passage is complete when every character matches. Continue manually, jump to another passage, return to the library, or start the current passage over.
 
-- 6 篇经典作品，每篇 10 个选段，每段 40–100 词。
-- 大小写、空格和标点均需匹配。引号使用直引号，长破折号使用 `--`。不支持粘贴或拖入文字。
-- 首次输入开始计时；输入框失焦、窗口失焦或页面隐藏时暂停；完成后停止。
-- WPM = 当前正确字符数 ÷ 5 ÷ 有效练习分钟数。准确率 = 历史正确输入字符数 ÷ 历史输入字符数；删除不撤销历史错误。选择文字后替换会计入新输入。
-- 本地保存当前文章、段落、输入、统计和已完成段落。恢复时处于暂停状态；重新练习会清空该段记录。
-- 不收集或上传练习记录，无账号、追踪器或第三方字体。浏览器存储不可用时会提示，仍可练习。数据损坏或原文变更时，相应记录安全重置。
+- Six classic works, ten excerpts each, with 40–100 words per passage.
+- Capitals, spaces and punctuation must match. Use straight quotes and two hyphens (`--`) for a long dash. Pasting and dropping text are disabled.
+- Timing starts with the first character and pauses when the input field, window or page loses focus. It stops on completion.
+- WPM = current correct characters ÷ 5 ÷ active minutes. Accuracy = historically correct input characters ÷ all input characters. Deleting does not undo earlier mistakes; replacing selected text counts as new input.
+- The current text, passage, input, statistics and completed passages are saved locally. Restored practice starts paused. Starting over clears that passage's record.
+- Practice records are never collected or uploaded. There are no accounts, trackers or third-party fonts. If browser storage is unavailable, a notice appears and practice remains available. Invalid records or records for changed passage text reset safely.
 
-## 本地运行与验证
+## Run locally and verify
 
-无构建步骤、无运行时依赖。需通过 HTTP 服务打开，不要直接双击 HTML：
+No build step or runtime dependencies are required. Use an HTTP server rather than opening the HTML file directly:
 
 ```sh
 python3 -m http.server 8000 --directory /absolute/path/to/english-typing
 ```
 
-访问 `http://localhost:8000`。Node.js 20 或更新版本可运行 `npm test`，无需安装依赖；测试覆盖输入统计、修正、恢复及文章数据。
+Open `http://localhost:8000`. With Node.js 20 or later, run `npm test`; no dependency installation is needed. Tests cover typing statistics, corrections, restoration and passage data.
 
-## 添加文章
+## Add a text
 
-1. 在 `data/` 中添加 JSON，参照 `alice.json`。必须保留稳定且唯一的文章 `id`、段落 `id`、原文 `text`、章节 `chapter`、字数 `words`，以及作品与来源信息。
-2. 在 `data/catalog.json` 添加该文章的摘要及相对 `file` 路径。站点自动生成卡片及段落列表；不要修改已有段落的 ID 来指代另一段内容。
-3. 使用版权允许的原文，不包含现代译文、编者注或插图。核对来源，按完整句子分段，并在 `sources.html` 更新来源说明。
-4. 检查练习及相对资源路径，然后提交到 `main`。测试中的固定书籍/段落数量需随正式扩充更新。
+1. Add a JSON file in `data/`, following `alice.json`. Preserve stable, unique book and passage IDs, the original `text`, `chapter`, word count (`words`), and work/source metadata.
+2. Add its summary and relative `file` path to `data/catalog.json`. Cards and passage navigation are generated automatically. Do not reuse an existing passage ID for a different passage.
+3. Use original texts whose rights permit reuse. Exclude modern translations, editorial notes and illustrations. Verify sources, split at sentence boundaries, and update `sources.html`.
+4. Check practice and relative resource paths, then commit to `main`. Update the fixed book/passage counts in the data tests when expanding the library.
 
-## 发布
+## Deployment
 
-公开仓库通过 GitHub Pages 的 `main` 分支根目录发布；`.nojekyll` 禁用 Jekyll 处理。所有资源采用相对路径，段落导航使用 hash，因此项目子路径及刷新均可用。
+The public repository is published by GitHub Pages from the root of `main`. The `.nojekyll` file disables Jekyll processing. Relative asset paths and hash navigation support project subpaths and page refreshes.
 
-## 内容来源与使用条件
+## Sources and terms
 
-见 [文章来源](sources.html) 与 [Project Gutenberg 完整许可](GUTENBERG-LICENSE.txt)。六部作品的原英文在 Project Gutenberg 标为美国公有领域。选段不连续，不代表整章；只规范化排版字符，并移除页码、脚注编号和装饰性大写。正文措辞保持原样。选段按原始段落和完整句子切分，章节及来源随段落展示。
+See [Sources & Notes](sources.html) and the [complete Project Gutenberg licence](GUTENBERG-LICENSE.txt). The six original English works are listed by Project Gutenberg as public domain in the United States. Excerpts are not continuous and do not represent complete chapters. Only typographic characters are normalised; page numbers, footnote markers and decorative capitalisation are removed. Original wording is preserved, with passages drawn from original paragraphs and split at sentence boundaries. Chapters and sources are shown during practice.
 
-Project Gutenberg 的名称及商标不意味着其对本站的认可。转载这些电子书内容请保留来源和许可信息，并遵守适用地区的要求。本站不包含电子书插图及现代译文。
+Project Gutenberg's name and trademark do not imply endorsement of this site. When redistributing these eBook excerpts, retain source and licence information and comply with requirements applicable in your location. This site does not include eBook illustrations or modern translations.
