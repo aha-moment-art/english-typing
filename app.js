@@ -1,7 +1,7 @@
 import { STORAGE_KEY, freshRecord, restoreRecord, applyInput, stats, formatTime, loadState } from './core.js';
 
 const $ = id => document.getElementById(id);
-const colors = [['#80566f','#f2e4ed'],['#875f72','#f4e7ed'],['#775d7c','#ece5f1'],['#8b5c69','#f5e5e9'],['#78617d','#eee6f0'],['#825b77','#f0e3ed']];
+const colors = [['#80566f','#f2e4ed'],['#82596d','#f4e7ed'],['#775d7c','#ece5f1'],['#8b5c69','#f5e5e9'],['#78617d','#eee6f0'],['#825b77','#f0e3ed']];
 const numerals = ['I','II','III','IV','V','VI'];
 let storage;
 try { storage = window.localStorage; storage.setItem(`${STORAGE_KEY}-check`, '1'); storage.removeItem(`${STORAGE_KEY}-check`); }
