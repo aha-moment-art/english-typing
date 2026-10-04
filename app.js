@@ -1,4 +1,5 @@
 import { STORAGE_KEY, freshRecord, restoreRecord, applyInput, stats, formatTime, loadState } from './core.js';
+import { createTypingSound } from './sound.js';
 
 const $ = id => document.getElementById(id);
 const colors = [['#705788','#eee5f8'],['#735b8a','#f0e8f9'],['#68567f','#eae4f4'],['#79598c','#f1e6f8'],['#655a81','#ebe7f6'],['#725780','#eee4f4']];
@@ -7,6 +8,7 @@ let storage;
 try { storage = window.localStorage; storage.setItem(`${STORAGE_KEY}-check`, '1'); storage.removeItem(`${STORAGE_KEY}-check`); }
 catch { $('storage-warning').hidden = false; }
 const state = loadState(storage || { getItem: () => null });
+const typingSound = createTypingSound(storage);
 let catalog = [], books = new Map(), book = null, paragraphIndex = 0, record = null;
 let activeSince = null, inputRange = null, composing = false;
 let feedbackTimer = null, advanceTimer = null, retrying = false;
@@ -16,6 +18,17 @@ const startButton = make('button', 'primary', 'Start typing');
 startButton.id = 'start-typing'; startButton.type = 'button';
 startButton.addEventListener('pointerdown', event => { if (document.activeElement === input) event.preventDefault(); });
 document.querySelector('.practice-nav').append(startButton);
+const soundButton = make('button', 'secondary sound-toggle');
+soundButton.id = 'sound-toggle'; soundButton.type = 'button';
+const updateSoundButton = () => {
+  soundButton.textContent = typingSound.enabled ? 'Sound: on' : 'Sound: off';
+  soundButton.setAttribute('aria-pressed', String(typingSound.enabled));
+  soundButton.setAttribute('aria-label', 'Typing sounds');
+};
+updateSoundButton();
+soundButton.addEventListener('pointerdown', event => { if (document.activeElement === input) event.preventDefault(); });
+soundButton.addEventListener('click', () => { typingSound.toggle(); updateSoundButton(); });
+document.querySelector('.practice-nav').insertBefore(soundButton, startButton);
 stage.append(input, $('typing-hint'), $('timer-state'), $('error-feedback'));
 input.setAttribute('aria-label', 'Type the displayed passage');
 $('typing-hint').textContent = 'Type directly here. Correct letters turn green. Only a mistaken character needs to be typed again.';
@@ -173,11 +186,14 @@ function updateCompletion() {
 function onInput() {
   if (!record || record.completed || composing || retrying) return;
   checkpoint();
+  const previousInput = record.input;
+  const previousAttempts = record.attempts;
   applyInput(record, input.value, inputRange); inputRange = null;
   if (record.completed) { activeSince = null; input.readOnly = true; }
   else resume();
   renderTyping(); updateCompletion(); save();
   const error = stats(record).firstError;
+  if (record.input !== previousInput || record.attempts > previousAttempts) typingSound.play(error >= 0 ? 'error' : 'key');
   if (error >= 0) {
     retrying = true; input.readOnly = true;
     const attempt = record;
