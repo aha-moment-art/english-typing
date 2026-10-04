@@ -9,7 +9,17 @@ catch { $('storage-warning').hidden = false; }
 const state = loadState(storage || { getItem: () => null });
 let catalog = [], books = new Map(), book = null, paragraphIndex = 0, record = null;
 let activeSince = null, inputRange = null, composing = false;
+let feedbackTimer = null, advanceTimer = null, retrying = false;
 const input = $('typing-input');
+const stage = document.querySelector('.passage-paper');
+const startButton = make('button', 'primary', 'Start typing');
+startButton.id = 'start-typing'; startButton.type = 'button';
+startButton.addEventListener('pointerdown', event => { if (document.activeElement === input) event.preventDefault(); });
+document.querySelector('.practice-nav').append(startButton);
+stage.append(input, $('typing-hint'), $('timer-state'), $('error-feedback'));
+input.setAttribute('aria-label', 'Type the displayed passage');
+$('typing-hint').textContent = 'Type directly here. Correct letters turn green. A mistake restarts the current word.';
+input.rows = 1;
 
 function checkpoint() {
   if (activeSince !== null && record) {
@@ -24,7 +34,7 @@ function save() {
   try { storage.setItem(STORAGE_KEY, JSON.stringify(state)); }
   catch { storage = null; $('storage-warning').hidden = false; $('save-status').textContent = 'Progress cannot be saved in this browser'; }
 }
-function pause() { checkpoint(); activeSince = null; save(); updateStats(); }
+function pause() { checkpoint(); activeSince = null; clearTimeout(advanceTimer); save(); updateStats(); }
 function resume() {
   if (record?.started && !record.completed && document.activeElement === input && !document.hidden && activeSince === null) activeSince = performance.now();
   updateStats();
@@ -77,6 +87,7 @@ function navigate(id, index) {
 }
 function route() {
   if (!catalog.length) return;
+  clearTimeout(feedbackTimer); clearTimeout(advanceTimer); retrying = false;
   pause();
   const match = /^#read\/([a-z0-9-]+)\/(\d+)$/.exec(location.hash);
   if (!match || !books.has(match[1])) {
@@ -107,6 +118,7 @@ function route() {
   $('previous-button').disabled = paragraphIndex === 0;
   $('next-button').textContent = paragraphIndex === book.paragraphs.length - 1 ? 'Back to library →' : 'Next passage →';
   $('action-message').textContent = '';
+  $('character-count').textContent = '';
   input.value = record.input; input.readOnly = record.completed; input.maxLength = p.text.length + 100;
   if (!storage) $('save-status').textContent = 'Progress cannot be saved in this browser';
   renderTyping(); updateCompletion(); save();
@@ -142,6 +154,9 @@ function updateStats() {
   $('accuracy-unit').textContent = metric.accuracy === null ? '' : '%';
   $('elapsed').textContent = formatTime(record.elapsed);
   $('timer-state').textContent = record.completed ? 'Complete' : activeSince !== null ? 'Typing' : record.started ? 'Paused' : 'Ready when you are';
+  startButton.textContent = record.completed ? 'Continue →' : document.activeElement === input ? 'Pause' : record.started ? 'Resume' : 'Start typing';
+  stage.classList.toggle('is-active', document.activeElement === input && !record.completed);
+  stage.classList.toggle('has-error', retrying);
 }
 function updateCompletion() {
   if (!book || !record) return;
@@ -151,18 +166,68 @@ function updateCompletion() {
   $('completion').hidden = !record.completed;
   if (record.completed) {
     $('completion-title').textContent = n === book.paragraphs.length ? 'You have finished this text.' : 'Passage complete.';
-    $('completion-detail').textContent = `Time ${formatTime(record.elapsed)} · Accuracy ${stats(record).accuracy ?? 100}%${paragraphIndex < book.paragraphs.length - 1 ? ' — continue when you are ready.' : ' — return to the library to choose another text.'}`;
+    $('completion-detail').textContent = `Time ${formatTime(record.elapsed)} · Accuracy ${stats(record).accuracy ?? 100}%${paragraphIndex < book.paragraphs.length - 1 ? ' — moving to the next passage. Press Enter to continue if paused.' : ' — you have reached the last passage.'}`;
     const option = $('paragraph-select').options[paragraphIndex]; if (option) option.textContent = `Passage ${paragraphIndex + 1} ✓`;
   }
 }
 function onInput() {
-  if (!record || record.completed || composing) return;
+  if (!record || record.completed || composing || retrying) return;
   checkpoint();
   applyInput(record, input.value, inputRange); inputRange = null;
   if (record.completed) { activeSince = null; input.readOnly = true; }
   else resume();
   renderTyping(); updateCompletion(); save();
+  const error = stats(record).firstError;
+  if (error >= 0) {
+    retrying = true; input.readOnly = true;
+    const attempt = record;
+    $('error-feedback').textContent += ' Try this word again.';
+    stage.classList.add('has-error');
+    feedbackTimer = setTimeout(() => {
+      if (record !== attempt) return;
+      // Retry only the current word; previous words and attempt statistics stay intact.
+      const start = record.target.lastIndexOf(' ', Math.max(0, error - 1)) + 1;
+      record.input = record.input.slice(0, start);
+      input.value = record.input; input.readOnly = false; retrying = false;
+      renderTyping(); save();
+    }, 450);
+  } else if (record.completed && paragraphIndex < book.paragraphs.length - 1) {
+    const finished = record;
+    advanceTimer = setTimeout(() => {
+      if (record === finished && document.activeElement === input && !document.hidden) advance();
+    }, 800);
+  }
 }
+function advance() {
+  if (!book) return;
+  if (paragraphIndex < book.paragraphs.length - 1) { navigate(book.id, paragraphIndex + 1); input.focus({ preventScroll: true }); }
+  else location.hash = '';
+}
+startButton.addEventListener('click', () => {
+  if (record?.completed) advance();
+  else if (startButton.textContent === 'Pause') { input.blur(); pause(); }
+  else { input.focus({ preventScroll: true }); input.setSelectionRange(input.value.length, input.value.length); updateStats(); }
+});
+stage.addEventListener('click', event => {
+  if (event.target.closest('a,button')) return;
+  input.focus({ preventScroll: true }); input.setSelectionRange(input.value.length, input.value.length); updateStats();
+});
+document.addEventListener('keydown', event => {
+  if (!book || help.open || event.ctrlKey || event.metaKey || event.altKey || event.isComposing) return;
+  if (event.target === input) {
+    if (event.key === 'Escape') { event.preventDefault(); input.blur(); }
+    else if (event.key === 'Enter' && record.completed) { event.preventDefault(); advance(); }
+    else if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','Enter'].includes(event.key)) event.preventDefault();
+    return;
+  }
+  if (event.target.closest('button,a,select,input,textarea,dialog')) return;
+  if (event.key === 'Enter' && record.completed) { event.preventDefault(); advance(); return; }
+  if (event.key.length === 1 && !record.completed && !retrying) {
+    event.preventDefault(); input.focus({ preventScroll: true });
+    inputRange = { start: record.input.length, end: record.input.length };
+    input.value = record.input + event.key; onInput();
+  }
+});
 input.addEventListener('beforeinput', event => {
   if (!composing && !event.inputType?.startsWith('delete')) inputRange = { start: input.selectionStart, end: input.selectionEnd };
   else if (!composing) inputRange = null;

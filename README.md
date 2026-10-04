@@ -1,16 +1,16 @@
 # A Little English
 
-A quiet English typing practice site with a light lavender palette and a paper-like background. Read the original above and type below, one passage at a time.
+A quiet English typing practice site with a light lavender palette and a paper-like background. Type directly on the original text, one passage at a time.
 
 Live site: <https://aha-moment-art.github.io/english-typing/>
 
 ## Practice
 
-Choose a text to begin. Correct letters turn green; errors have red underlines. A passage is complete when every character matches. Continue manually, jump to another passage, return to the library, or start the current passage over.
+Choose a text and begin typing, or select Start typing. There is no separate visible input box or caret. Correct letters turn green; a wrong character flashes red for 450 ms and restarts the current word, retaining earlier words and historical errors. Backspace removes the previous character. A completed passage advances after 800 ms while practice is focused and visible. Leaving the page cancels automatic advance; Continue or Enter resumes navigation. The final passage stays on its completion summary. You may also jump between passages, return to the library, or start the current passage over.
 
 - Six classic works, ten excerpts each, with 40–100 words per passage.
 - Capitals, spaces and punctuation must match. Use straight quotes and two hyphens (`--`) for a long dash. Pasting and dropping text are disabled.
-- Timing starts with the first character and pauses when the input field, window or page loses focus. It stops on completion.
+- Timing starts with the first character and pauses on Escape, Pause, or loss of practice/window/page focus. It stops on completion. On mobile, tap the passage or Start typing to open the keyboard.
 - WPM = current correct characters ÷ 5 ÷ active minutes. Accuracy = historically correct input characters ÷ all input characters. Deleting does not undo earlier mistakes; replacing selected text counts as new input.
 - The current text, passage, input, statistics and completed passages are saved locally. Restored practice starts paused. Starting over clears that passage's record.
 - Practice records are never collected or uploaded. There are no accounts, trackers or third-party fonts. If browser storage is unavailable, a notice appears and practice remains available. Invalid records or records for changed passage text reset safely.
