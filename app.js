@@ -121,7 +121,7 @@ function renderTyping() {
   let run = '', previousClass = null;
   const flush = () => { if (run) fragment.append(make('span', previousClass, run)); run = ''; };
   for (let i = 0; i < record.target.length; i++) {
-    const cls = i < record.input.length ? (record.input[i] === record.target[i] ? 'correct' : 'incorrect') : i === record.input.length ? 'cursor' : '';
+    const cls = i < record.input.length ? (record.input[i] === record.target[i] ? 'correct' : 'incorrect') : '';
     if (cls !== previousClass) { flush(); previousClass = cls; }
     run += record.target[i];
   }
